@@ -3,7 +3,7 @@ package model;
 import enums.Status;
 import enums.TipoVeiculo;
 
-public abstract class Veiculo {
+public abstract class Veiculo implements Operavel {
     private int id;
     private String modelo;
     private TipoVeiculo tipo;
@@ -14,11 +14,32 @@ public abstract class Veiculo {
         this.id = id;
         this.modelo = modelo;
         this.tipo = tipo;
-        this.status = status;
+        this.status = Status.FORA_DE_OPERACAO;
         this.rota = rota;
     }
 
     public abstract String getDescricao();
+
+    @Override
+    public void iniciarOperacao() {
+        if (status == Status.FORA_DE_OPERACAO) {
+            status = Status.EM_MOVIMENTO;
+            System.out.println(tipo + " " + modelo + " agora está em operação.");
+        } else {
+            System.out.println(tipo + " " + modelo + " já está em operação.");
+        }
+    }
+
+    @Override
+    public void pararOperacao() {
+        if (status == Status.EM_MOVIMENTO) {
+            status = Status.FORA_DE_OPERACAO;
+            System.out.println(tipo + " " + modelo + " parou de operar.");
+        } else {
+            System.out.println(tipo + " " + modelo + " não está em operação.");
+        }
+    }
+
 
     @Override
     public String toString() {
