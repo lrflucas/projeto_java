@@ -40,6 +40,16 @@ public abstract class Veiculo implements Operavel {
         }
     }
 
+    @Override
+    public void voltarOperacao() {
+        if (status == Status.PARADO) {
+            status = Status.EM_MOVIMENTO;
+            System.out.println(tipo + " " + modelo + " voltou a se movimentar.");
+        } else {
+            System.out.println(tipo + " " + modelo + " está ou não em operação.");
+        }
+    }
+
 
     @Override
     public String toString() {
