@@ -10,7 +10,7 @@ public class Rota {
     public Rota(int id, String nome, ArrayList<Parada> paradas) {
         this.id = id;
         this.nome = nome;
-        this.paradas = new ArrayList<>();
+        this.paradas = paradas;
     }
 
     public void adicionarParada(Parada parada) {
